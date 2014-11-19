@@ -11,10 +11,10 @@ class EaSeoMiddleWare:
     def process_request(self, request):
         
         try:
-            if request.GET['_escaped_fragment_']=='/':
+            if request.GET['_escaped_fragment_']!='':
                 
                 location = request.get_full_path()
-                absolute_uri = request.get_absolute_uri(location)
+                absolute_uri = request.build_absolute_uri(location)
                 try:
                     resp = urlfetch.fetch('http://2.angular-seo-dev-1001.appspot.com/service/v1/snapshot?url='+absolute_uri, method=urlfetch.GET, deadline=300)
                     
